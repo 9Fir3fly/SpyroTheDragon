@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var navController: NavController? = null
 
-    // ---------------- TUTORIAL ----------------
+    // VARIABLES PARA LA GUÍA
 
-    private var tutorialStep = 0
+    private var guideStep = 0
     private lateinit var currentOverlay: View
     private lateinit var btnSaltar: TextView
     private lateinit var soundPool: SoundPool
@@ -43,18 +43,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val prefs = getSharedPreferences("app", MODE_PRIVATE)
-        val tutorialShown = prefs.getBoolean("tutorialShown", false)
+        val guideShown = prefs.getBoolean("guideShown", false)
 
-        if (!tutorialShown) {
+        if (!guideShown) {
             showWelcomeOverlay()
         }
-
+        /*He añadido directamente en la MainActivity el código para el botón de saltar tutorial
+         porque se me había pasado, y consideré que esta forma sería más "sencilla" y menos repetitiva
+         que añadirlo en cada layout*/
         btnSaltar = TextView(this).apply {
-            text = "Saltar tutorial"
+            text = "Saltar Guía"
             textSize = 14f
             setTextColor(getColor(R.color.purple))
             setOnClickListener {
-                finalizarTutorial()
+                finalizarGuia()
             }
         }
 
@@ -92,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
             }
         }
+        //Código para habilitar el SoundPool con los sonidos de efectos elegidos
         val audioAttributes = AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_GAME)
             .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
@@ -108,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // ---------------- BOTTOM NAV ----------------
+    //NAVEGACIÓN
 
     private fun selectedBottomMenu(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
@@ -124,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    // ---------------- MENU INFO ----------------
+    // MENÚ
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.about_menu, menu)
@@ -148,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    // ---------------- OVERLAY BIENVENIDA ----------------
+    // OVERLAY LAYOUT BIENVENIDA (WELCOME)
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showWelcomeOverlay() {
@@ -176,14 +179,16 @@ class MainActivity : AppCompatActivity() {
                 .withEndAction {
                     (overlay.parent as ViewGroup).removeView(overlay)
 
-                    tutorialStep = 0
+                    guideStep = 0
                     nextStepGuide()
                 }
         }
     }
 
-    // ---------------- SISTEMA DE PASOS ----------------
-
+    /*Código función "paso a paso" para que la guía avance, implementamos el botón para avanzar
+    (Siguiente), el botón para saltarnos la guía (que conlleva la función de finalizar la guía
+    que hay más abajo implementada), aparte de los sonidos atribuidos a cada elemento correspondiente.
+     */
     @SuppressLint("SetTextI18n")
     private fun nextStepGuide() {
 
@@ -193,7 +198,7 @@ class MainActivity : AppCompatActivity() {
             root.removeView(currentOverlay)
         }
 
-        val layoutId = when (tutorialStep) {
+        val layoutId = when (guideStep) {
             0 -> R.layout.p2_guide_characters
             1 -> R.layout.p3_guide_worlds
             2 -> R.layout.p4_guide_collectibles
@@ -210,32 +215,32 @@ class MainActivity : AppCompatActivity() {
             btnSaltar.bringToFront()
         }
 
-        if (tutorialStep == 4) {
+        if (guideStep == 4) {
 
             val btnComenzar = currentOverlay.findViewById<Button>(R.id.btn_Comenzar)
 
             btnComenzar?.setOnClickListener {
                 soundPool.play(soundComenzarApp, 1f, 1f, 1, 0, 1f)
 
-                finalizarTutorial()
+                finalizarGuia()
             }
         }
 
-        if (tutorialStep != 4) {
+        if (guideStep != 4) {
 
             val btnSiguiente = currentOverlay.findViewById<Button>(R.id.btn_siguiente)
 
             btnSiguiente?.setOnClickListener {
                 soundPool.play(soundSiguiente, 1f, 1f, 1, 0, 1f)
 
-                tutorialStep++
+                guideStep++
                 nextStepGuide()
             }
         }
 
         animarOverlay(currentOverlay)
 
-        when (tutorialStep) {
+        when (guideStep) {
             0 -> navController?.navigate(R.id.navigation_characters)
             1 -> navController?.navigate(R.id.navigation_worlds)
             2 -> navController?.navigate(R.id.navigation_collectibles)
@@ -256,7 +261,7 @@ class MainActivity : AppCompatActivity() {
             .start()
     }
 
-    private fun finalizarTutorial() {
+    private fun finalizarGuia() {
 
         val root = findViewById<ViewGroup>(android.R.id.content)
 
@@ -269,7 +274,7 @@ class MainActivity : AppCompatActivity() {
         }
         getSharedPreferences("app", MODE_PRIVATE)
             .edit {
-                putBoolean("tutorialShown", true)
+                putBoolean("guideShown", true)
             }
     }
 }

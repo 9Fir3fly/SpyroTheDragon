@@ -28,7 +28,8 @@ class CharactersAdapter(
             .inflate(R.layout.cardview, parent, false)
         return CharactersViewHolder(view)
     }
-
+    /*Modificación de la función onBindViewHolder para añadir el efecto "mágico" de glow en el
+     personaje de Ripto. */
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
 
         val character = list[position]

@@ -10,7 +10,7 @@ import android.graphics.RadialGradient
 import android.graphics.Shader
 import android.view.View
 import android.widget.ImageView
-
+//CLASE RIPTOMAGICVIEW PARA EL EFECTO "GLOW" DEL CETRO DEL PERSONAJE EN CUESTIÓN
 @SuppressLint("ViewConstructor")
 class RiptoMagicView(
     context: Context,
@@ -41,7 +41,7 @@ class RiptoMagicView(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        // 🔆 Color progresivo rojizo (del rojo intenso a naranja)
+        //Color rojizo
         val red = 255
         val green = (80 + intensity * 50).toInt()    // 80 → 130
         val blue = (80)                       // fijo
@@ -49,7 +49,7 @@ class RiptoMagicView(
 
         diamondPaint.color = color
 
-        // 🌟 Brillo radial
+        //Brillo radial
         val gradient = RadialGradient(
             centerX, centerY,
             120f + intensity * 100,
@@ -62,7 +62,7 @@ class RiptoMagicView(
 
     }
 
-    // Inicia la animación
+    // Iniciar la animación
     fun startMagic() {
         if (animator?.isRunning == true) return
 
@@ -79,7 +79,7 @@ class RiptoMagicView(
         }
     }
 
-    // Detiene la animación
+    // Detener la animación
     fun stopMagic() {
         animator?.cancel()
         animator = null

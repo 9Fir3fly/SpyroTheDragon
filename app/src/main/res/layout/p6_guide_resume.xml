@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- LAYOUT TIPO "OVERLAY" PARA LA ÚLTIMA PANTALLA DE RESUMEN -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,14 +42,13 @@
         <TextView
             android:id="@+id/textView"
             style="@style/tv_welcome_text"
-            android:layout_width="344dp"
-            android:layout_height="415dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="342dp"
+            android:layout_height="430dp"
+            android:layout_marginTop="12dp"
             android:text="@string/tv_resume"
             android:textColor="@color/white"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/shapeLine" />
 
@@ -56,8 +57,7 @@
             style="@style/tv_comenzar_style"
             android:layout_width="155dp"
             android:layout_height="62dp"
-            android:layout_margin="50dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="32dp"
             android:background="@color/purple_transparent"
             android:text="@string/comenzar"
             android:textColor="#C4FFFFFF"

@@ -28,7 +28,7 @@ class WorldsFragment : Fragment() {
     private lateinit var adapter: WorldsAdapter
     private val worldsList = mutableListOf<World>()
 
-
+    //Modificación del código onCreateView para añadir el easter egg del video
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -95,6 +95,7 @@ class WorldsFragment : Fragment() {
         }
     }
 
+//Función para activar el easter egg del video que usamos más arriba en onCreateView
     private fun activarEasterEggVideo() {
         startActivity(Intent(requireContext(), ActivityEasterEggVideo::class.java))
     }
