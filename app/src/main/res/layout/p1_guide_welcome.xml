@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/bg_welcome_overlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:paddingBottom="0dp">
+
+        <TextView
+            android:id="@+id/tvBienvenido"
+            style="@style/tv_welcome_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/bienvenido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/GifSpyro"
+            android:layout_width="175dp"
+            android:layout_height="154dp"
+            android:contentDescription="@string/gif_spyro"
+            android:src="@drawable/video_games_90s_sticker"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvTextoBienvenida2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTextoBienvenida"
+            app:layout_constraintVertical_bias="0.435" />
+
+        <TextView
+            android:id="@+id/tvTextoBienvenida"
+            style="@style/tv_welcome_text"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="112dp"
+            android:text="@string/textoBienvenida"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTextoBienvenida2"
+            style="@style/tv_welcome_text"
+            android:layout_width="350dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="160dp"
+            android:textColor="@color/white"
+            android:text="@string/textoBienvenida2"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTextoBienvenida" />
+
+        <TextView
+            android:id="@+id/tvComenzarDiamond"
+            style="@style/tv_comenzar_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/comenzar"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <FrameLayout
+            android:layout_width="161dp"
+            android:layout_height="143dp"
+            android:paddingBottom="0dp"
+            app:layout_constraintBottom_toTopOf="@id/tvComenzarDiamond"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTextoBienvenida2">
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/GifDiamanteBoton"
+                android:background="@drawable/shape_glow"
+
+                android:layout_width="155dp"
+                android:layout_height="139dp"
+                android:layout_gravity="bottom"
+                android:clickable="true"
+                android:contentDescription="@string/diamond_button"
+                android:focusable="true"
+                android:paddingBottom="0dp"
+                android:soundEffectsEnabled="true"
+                android:src="@drawable/placidplace_diamond_23385_128" />
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

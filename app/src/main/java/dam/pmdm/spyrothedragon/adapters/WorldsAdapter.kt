@@ -10,7 +10,8 @@ import dam.pmdm.spyrothedragon.R
 import dam.pmdm.spyrothedragon.models.World
 
 class WorldsAdapter(
-    private val list: List<World>
+    private val list: List<World>,
+    private val onTripleClick: () -> Unit
 ) : RecyclerView.Adapter<WorldsAdapter.WorldsViewHolder>() {
 
     private val worldImages = mapOf(
@@ -31,12 +32,31 @@ class WorldsAdapter(
         return WorldsViewHolder(view)
     }
 
+    // Clicks control easter egg
+    private var lastWorldClicked: Int? = null
+    private var clickCount = 0
+
     override fun onBindViewHolder(holder: WorldsViewHolder, position: Int) {
         val world = list[position]
         holder.nameTextView.text = world.name
 
         val drawableRes = worldImages[world.image] ?: R.drawable.placeholder
         holder.imageImageView.setImageResource(drawableRes)
+
+        holder.itemView.setOnClickListener {
+
+            if (lastWorldClicked == position) {
+                clickCount++
+            } else {
+                clickCount = 1
+                lastWorldClicked = position
+            }
+
+            if (clickCount == 3) {
+                onTripleClick()
+                clickCount = 0
+            }
+        }
     }
 
     override fun getItemCount(): Int = list.size
@@ -45,4 +65,5 @@ class WorldsAdapter(
         val nameTextView: TextView = itemView.findViewById(R.id.name)
         val imageImageView: ImageView = itemView.findViewById(R.id.image)
     }
+
 }

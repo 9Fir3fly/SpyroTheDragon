@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_transparent">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fl_characters"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/shapeImage"
+            android:layout_width="350dp"
+            android:layout_height="262dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:contentDescription="@string/descriptioncharacter"
+            android:scaleType="centerCrop"
+            android:src="@drawable/shape_oval" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/tv_welcome_text"
+            android:layout_width="258dp"
+            android:layout_height="151dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="@string/tv_characters"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/shapeImage2"
+            android:layout_width="143dp"
+            android:layout_height="128dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shape_oval"
+            android:layout_marginBottom="-35dp"
+            android:layout_marginStart="-10dp"
+            android:contentDescription="@string/character_guide" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_siguiente"
+        style="@style/tv_comenzar_style"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/siguiente" />
+</FrameLayout>

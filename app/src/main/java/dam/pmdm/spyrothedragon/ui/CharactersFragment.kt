@@ -1,5 +1,6 @@
 package dam.pmdm.spyrothedragon.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ class CharactersFragment : Fragment() {
     private lateinit var adapter: CharactersAdapter
     private val charactersList = mutableListOf<Character>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,6 +48,7 @@ class CharactersFragment : Fragment() {
         _binding = null
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun loadCharacters() {
         try {
             val inputStream: InputStream =

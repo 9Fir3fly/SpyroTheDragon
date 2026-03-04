@@ -3,14 +3,17 @@ package dam.pmdm.spyrothedragon.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import dam.pmdm.spyrothedragon.R
+import dam.pmdm.spyrothedragon.RiptoMagicView
 import dam.pmdm.spyrothedragon.models.Character
 
 class CharactersAdapter(
-    private val list: List<Character>
+    private val list: List<Character>,
 ) : RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>() {
 
     private val characterImages = mapOf(
@@ -27,11 +30,40 @@ class CharactersAdapter(
     }
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
+
         val character = list[position]
         holder.nameTextView.text = character.name
 
         val drawableRes = characterImages[character.image] ?: R.drawable.placeholder
         holder.imageImageView.setImageResource(drawableRes)
+
+        holder.itemView.setOnClickListener {
+            val container = holder.itemView.findViewById<FrameLayout>(R.id.imageContainer)
+
+            // Buscar si ya hay RiptoMagicView
+            val existingMagic = container.children
+                .filterIsInstance<RiptoMagicView>()
+                .firstOrNull()
+
+            if (existingMagic != null) {
+                // Detener animación y remover
+                existingMagic.stopMagic()
+                container.removeView(existingMagic)
+            } else {
+                // Crear y añadir la animación
+                val magicView =
+                    RiptoMagicView(holder.itemView.context, holder.imageImageView, 0.20f, 0.35f)
+                container.addView(
+                    magicView,
+                    FrameLayout.LayoutParams(
+                        holder.imageImageView.width,
+                        holder.imageImageView.height
+                    )
+                )
+                magicView.startMagic()
+            }
+
+        }
     }
 
     override fun getItemCount(): Int = list.size

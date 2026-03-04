@@ -4,6 +4,32 @@
     <string name="characters">Personajes</string>
     <string name="collectibles">Coleccionables</string>
     <string name="title_about">Acerca de</string>
-    <string name="text_about">Aplicación desarrollada por \n <b>Lindsay Barrero Martínez.</b></string>
+    <string name="text_about">Aplicación desarrollada por\n<b>Carmen Luna Moreno.</b></string>
     <string name="accept">Aceptar</string>
+    <string name="todo">TODO</string>
+    <string name="comenzar">Comenzar</string>
+    <string name="bienvenido">BIENVENIDO</string>
+    <string name="textoBienvenida">Prepárate para explorar el mundo mágico de esta aplicación inspirada en SPYRO.\n
+    Aquí aprenderás a navegar por pestañas llenas de dragones, mundos fascinantes y montones de tesoros brillantes.\n</string>
+    <string name="textoBienvenida2">¿Listo para empezar?\n\n
+    Toca el diamante para comenzar y deja que Spyro te lleve volando a través de esta guía interactiva</string>
+    <string name="diamond_button">gif_diamond</string>
+    <string name="gif_spyro">gif_spyro\n</string>
+    <string name="descriptioncharacter">descriptionCharacter</string>
+    <string name="character_guide">character section\t</string>
+    <string name="tv_characters">Aquí podrás explorar a todos los personajes del mundo de Spyro</string>
+    <string name="tv_worlds">Aquí podrás explorar los mundos mágicos de Spyro</string>
+    <string name="tv_collectibles">Aquí podrás explorar los coleccionables del juego de Spyro</string>
+    <string name="descriptioncollectibles">collectibles</string>
+    <string name="tv_info_button">Clica aquí para conseguir más información del desarrollador</string>
+    <string name="info_button">botón de información\n</string>
+    <string name="resume">resumen de la guía\n\t</string>
+    <string name="tv_resume">
+    ~ Sección PERSONAJES:\nPara poder ver información sobre los personajes de Spyro.\n\n
+    ~ Sección MUNDOS:\nPara poder ver información sobre los mundos de Spyro.\n\n
+    ~ Sección COLECCIONABLES:\nPara poder ver información sobre los coleccionables de Spyro.\n\n
+    ~ Icono de INFORMACIÓN:\nNombre del desarrollador/a de esta guía interactiva.\n\n</string>
+    <string name="tv_resumen">RESUMEN</string>
+    <string name="line_resume">line_resume</string>
+    <string name="siguiente">Siguiente</string>
 </resources>
