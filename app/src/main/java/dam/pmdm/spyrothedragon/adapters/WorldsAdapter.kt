@@ -1,5 +1,6 @@
 package dam.pmdm.spyrothedragon.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,7 @@ class WorldsAdapter(
     private var lastWorldClicked: Int? = null
     private var clickCount = 0
 
-    override fun onBindViewHolder(holder: WorldsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WorldsViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val world = list[position]
         holder.nameTextView.text = world.name
 
